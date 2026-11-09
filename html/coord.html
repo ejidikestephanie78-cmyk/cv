@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Coordinate Finder</title>
+</head>
+<body>
+
+<h2>Click on your image to get coordinates</h2>
+
+<img id="photo"
+     src="image.png"
+     width="300"
+     height="350"
+     style="cursor:crosshair;">
+
+<h3 id="result">Your coordinates will appear here</h3>
+
+<script>
+const photo = document.getElementById("photo");
+
+photo.addEventListener("click", function(event) {
+
+    const rect = photo.getBoundingClientRect();
+
+    const x = Math.round(event.clientX - rect.left);
+    const y = Math.round(event.clientY - rect.top);
+
+    document.getElementById("result").innerHTML =
+        "X = " + x + " , Y = " + y;
+
+});
+</script>
+
+</body>
+</html>
